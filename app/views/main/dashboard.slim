@@ -1,0 +1,13 @@
+doctype 5
+html lang="en" 
+  head
+    meta charset="UTF-8"
+    title== "Dashboard For #{current_account.username}"
+    == include_css 'index'  
+    == include_css :bundles => @widgets_css
+    script type="text/javascript" charset="utf-8"== "var widgets = [#{@widgets.join(',')}];"
+    == include_js :jquery, :bundle => 'dashboard'
+    == include_js :bundles => @widgets_js    
+    style type="text/css" media="screen"== strip_tags(@dashboard.css)  
+  body.dashboard    
+    #widgets

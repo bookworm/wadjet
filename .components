@@ -1,0 +1,7 @@
+--- 
+:test: shoulda
+:script: jquery
+:renderer: slim
+:mock: none
+:orm: mongomapper
+:stylesheet: compass

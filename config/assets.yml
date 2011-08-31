@@ -1,0 +1,10 @@
+js:
+  bundles:    
+    index:
+      - jquery-ujs  
+      - application 
+    dashboard:
+      - jquery-ujs  
+      - application  
+    fake:
+      - fake
