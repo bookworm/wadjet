@@ -52,5 +52,9 @@ $(document).ready(function() {
   $('.setings-form').live('ajax:success', function(event, xhr, status) {      
     var response = $.parseJSON(xhr.responseText);           
     $(this).parent('.dialog').close();
+  });     
+  
+  $('.cancel').click(function() {
+    $(this).parent('.dialog').close();
   });
 });

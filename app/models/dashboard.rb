@@ -1,12 +1,16 @@
 class Dashboard
   include MongoMapper::Document
   
+  key :title, String
   key :account_id, ObjectId      
   key :css,        String     
-  key :grid,       String
-  key :grid_class, String
+  key :grid_id,    ObjectId
     
   belongs_to :user, :class => 'Account'   
+        
+  def grid()
+    Grid.first(:id => self.grid_id) 
+  end
   
   def widgets(options={})
     Widget.all({:dashboard_id => self.id}.merge!(options))
