@@ -16,7 +16,8 @@ class Wadjet < Padrino::Application
   Padrino.use Rack::Session::Redis      
     
   # Resources. JS, CSS handling ext
-  register CompassInitializer
+  register CompassInitializer  
+  register Sinatra::AssetPack
   register AssetHatInitializer      
   register Sinatra::Flash
   

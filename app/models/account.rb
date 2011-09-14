@@ -44,6 +44,10 @@ class Account
   
   def dashboard()
     Dashboard.first(:account_id => self.id)
+  end    
+  
+  def dashboards()
+    Dashboard.all(:account_id => self.id)
   end
   
   ## 

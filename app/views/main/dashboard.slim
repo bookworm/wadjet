@@ -9,5 +9,5 @@ html lang="en"
     == include_js :jquery, :bundle => 'dashboard'
     == include_js :bundles => @widgets_js    
     style type="text/css" media="screen"== strip_tags(@dashboard.css)  
-  body.dashboard    
-    #widgets
+  body.dashboard class==@dashboard.grid_classs        
+    #widgets.containers

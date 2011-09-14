@@ -32,6 +32,7 @@ gem 'redis-store', :git => "git://github.com/jodosha/redis-store.git"
 gem 'enki', :git => 'git://github.com/bookworm/enki.git'    
 gem 'bcrypt-ruby' 
 gem 'garb'
+gem 'sinatra-assetpack', :require => 'sinatra/assetpack'
     
 # Test requirements
 gem 'shoulda', :group => "test"

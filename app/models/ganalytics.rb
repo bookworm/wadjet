@@ -5,7 +5,7 @@ class Ganalytics < Widget
   metrics :exits, :pageviews
   dimensions :page_path
                        
-  # TODO: use oauth intstead
+  # TODO: use oauth instead
   key :username, String
   key :password, String 
   
