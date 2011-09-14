@@ -1,0 +1,4 @@
+-form_for('dashboard', url(:dashboards, :updatee, :slug => @dashboard.slug), :class => 'form settings-form', :remote => true) do |f|  
+  == partial "dashboards/_form" 
+  == f.button 'Cancel', :class => :btn     
+  == f.submit 'Save', :class => :btn
