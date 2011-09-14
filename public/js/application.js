@@ -25,13 +25,32 @@ $(document).ready(function() {
       var json_data = $.parseJSON(data);    
       
       var $dialog = $('<div></div>')
-    		.html(json_data.html)
-    		.dialog({
-    			autoOpen: false,
-    			title: json_data.titles
-    		});    
-    		
-  		$dialog.dialog('open');
+        .html(json_data.html)
+        .dialog({
+          autoOpen: false,
+          title: json_data.titles
+        });    
+        
+      $dialog.dialog('open');
     });
+  });
+  
+  $('.settings-form').live('ajax:failure', function(event, xhr, status) {
+    var response = $.parseJSON(xhr.responseText);    
+
+    if($.isPlainObject(response))
+    {      
+      if(response.errors) {
+        $(this).data().validator.showErrors(response.errors);
+      }
+      else {
+        $(this).data().validator.showErrors({"email": response.message});
+      }
+    }      
+  });  
+  
+  $('.setings-form').live('ajax:success', function(event, xhr, status) {      
+    var response = $.parseJSON(xhr.responseText);           
+    $(this).parent('.dialog').close();
   });
 });
