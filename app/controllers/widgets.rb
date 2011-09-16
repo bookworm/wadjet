@@ -17,5 +17,10 @@ Wadjet.controllers :widgets do
     else
       return halt 400, @widget.errors.to_json
     end
+  end  
+  
+  get :render_fragment, :map => '/widgets/render_fragment/:slug'  do
+    @widget = current_account.dashboard.widgets(:slug => params[:slug]).first
+    {:html => render "widgets/#{@widget.view}"}.to_json
   end
 end 

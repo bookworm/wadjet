@@ -49,5 +49,13 @@ class Wadjet < Padrino::Application
   #
   error 404 do 
     render 'errors/404'
-  end
+  end  
+  
+  assets {
+
+    js :app, '/js/app.js', [
+      '/js/vendor/**/*.js',
+      '/js/app/**/*.js'
+    ]
+  }
 end

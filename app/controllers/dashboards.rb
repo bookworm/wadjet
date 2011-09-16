@@ -5,7 +5,7 @@ Wadjet.controllers :dashboards do
   end
   
   before(:index, :show) do
-    @widgets = Widget.fields(:name, :js, :css).all(:dashboard_id => @dashboard.id)    
+    @widgets = Widget.fields(:slug, :js, :css).all(:dashboard_id => @dashboard.id)    
     
     @widgets_js = []
     @widgets_css = []
@@ -13,9 +13,14 @@ Wadjet.controllers :dashboards do
     @widgets.each do |w|
       w.js.each { |j| @widgets_js << j }     
       w.css.each { |c| @widgets_css << c }
-    end   
+    end  
     
-    @widgets = @widgets.map { |w| "'#{w.name}'" }  
+    assets do
+      js :widgets,  @widgets_js
+      css :widgets, @widgets_css
+    end 
+    
+    @widgets = @widgets.map { |w| "'#{w.slug}'" }  
   end  
   
   before(:create, :edit) do 
