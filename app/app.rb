@@ -1,6 +1,4 @@
 require 'sinatra/flash'  
-require 'resque' 
-require 'redis-store'
 class Wadjet < Padrino::Application
   ##
   # Initializers
@@ -13,12 +11,10 @@ class Wadjet < Padrino::Application
   # Authorizaition
   register Padrino::Admin::AccessControl 
   register OmniAuthInitializer    
-  Padrino.use Rack::Session::Redis      
     
   # Resources. JS, CSS handling ext
   register CompassInitializer  
   register Sinatra::AssetPack
-  register AssetHatInitializer      
   register Sinatra::Flash
   
   ##
@@ -52,7 +48,6 @@ class Wadjet < Padrino::Application
   end  
   
   assets {
-
     js :app, '/js/app.js', [
       '/js/vendor/**/*.js',
       '/js/app/**/*.js'

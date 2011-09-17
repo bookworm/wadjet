@@ -20,7 +20,8 @@ Wadjet.controllers :widgets do
   end  
   
   get :render_fragment, :map => '/widgets/render_fragment/:slug'  do
-    @widget = current_account.dashboard.widgets(:slug => params[:slug]).first
-    {:html => render "widgets/#{@widget.view}"}.to_json
+    @widget = current_account.dashboard.widgets(:slug => params[:slug]).first    
+    html = render "widgets/#{@widget.view}"
+    {:html => html}.to_json
   end
 end 

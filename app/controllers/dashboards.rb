@@ -5,22 +5,22 @@ Wadjet.controllers :dashboards do
   end
   
   before(:index, :show) do
-    @widgets = Widget.fields(:slug, :js, :css).all(:dashboard_id => @dashboard.id)    
+    @widgets = Widget.fields(:slug, :js, :css, :refresh).all(:dashboard_id => @dashboard.id)    
     
     @widgets_js = []
     @widgets_css = []
-    
+
     @widgets.each do |w|
-      w.js.each { |j| @widgets_js << j }     
-      w.css.each { |c| @widgets_css << c }
+      w.js.each { |j| @widgets_js << '/js/widgets/' + j }
+      w.css.each { |c| @widgets_css << '/css/widgets/' + c }
     end  
     
-    assets do
-      js :widgets,  @widgets_js
-      css :widgets, @widgets_css
+    Wadjet.assets do
+      js :widgets,  @widgets_js unless @widgets_js.empty?
+      css :widgets, @widgets_css unless @widgets_css.empty?  
     end 
     
-    @widgets = @widgets.map { |w| "'#{w.slug}'" }  
+    @widgets = @widgets.map { |w| { :slug => w.slug, :refresh => w.refresh} }  
   end  
   
   before(:create, :edit) do 
@@ -40,12 +40,12 @@ Wadjet.controllers :dashboards do
     render 'dashboards/show' 
   end  
   
-  get :create, :map => do
+  get :create, :map => '/dashboards/create' do
     @selected_grid = @grids.first.id
   end
    
   post :create, :map => '/dashboards/create' do
-    @dashboard = Dashboard.new({params[:dashboard]}.merge!({:account_id => current_account.id}))
+    @dashboard = Dashboard.new({:account_id => current_account.id}.merge!(params[:dashboard]))
     if @dashboard.save
       return 200
     else

@@ -20,18 +20,15 @@ gem 'paginator'
 gem 'fog'
 gem 'postmark'  
 gem 'defender'   
-gem 'omniauth', :git => 'git://github.com/intridea/omniauth.git'
+gem 'omniauth', :git => 'git://github.com/intridea/omniauth.git', :branch => '0-3-stable'
 gem 'tzinfo'
 gem 'sanitize'   
 gem 'asset_hat', :git => 'git://github.com/bookworm/asset_hat.git'
 gem 'sinatra-flash', :git => "git://github.com/bookworm/sinatra-flash.git"  
-gem 'redis' 
-gem 'redis-namespace'
-gem 'resque' 
-gem 'redis-store', :git => "git://github.com/jodosha/redis-store.git"        
 gem 'enki', :git => 'git://github.com/bookworm/enki.git'    
 gem 'bcrypt-ruby' 
-gem 'garb'
+gem 'garb'                                                  
+gem 'yajl-ruby', :require => 'yajl'
 gem 'sinatra-assetpack', :require => 'sinatra/assetpack'
     
 # Test requirements

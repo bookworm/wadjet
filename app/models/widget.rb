@@ -9,10 +9,15 @@ class Widget
   key :desc,         String   
   key :js,           Array
   key :css,          Array   
+  key :refresh,      Boolean, :default => true
+  key :size, Size
   
-  has_one :position   
+  slug_key :name    
   
-  slug_key :name
+  def dashboard=(dashboard)
+    self[:dashboard_id] = dashboard if dashboard.is_a?(BSON::ObjectId)    
+    self[:dashboard_id] = dashboard.id if dashboard.is_a?(Dashboard)
+  end
   
   def generate_slug()    
     return false if self[self.class.slug_key].blank?

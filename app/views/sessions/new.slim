@@ -3,7 +3,7 @@ html lang="en"
   head
     meta charset="UTF-8"
     title Login
-    == include_css 'login'
-    == include_js :jquery, :bundle => 'index'
+    == stylesheet_link_tag 'login.css'
+    == js :app
   body.index            
     #login== partial "user/loginblock"

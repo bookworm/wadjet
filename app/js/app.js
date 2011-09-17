@@ -1,10 +1,27 @@
 $(document).ready(function() {      
   $.each(widgets, function(index, value) {   
-    $.get('widgets/render_fragment/' + value, function(data) {  
-      var json_data = $.parseJSON(data);    
-      $('#widgets').append(json_data.html);
+    $.get('widgets/render_fragment/' + value.slug, function(data) {  
+      var json_data = $.parseJSON(data);     
+      var $widget = $('<div></div>')
+        .attr('id', '#widget'+'-'+value.slug)
+        .html(json_data.html);
+      $('#widgets').append($widget);
     });
-  });   
+  }); 
+  
+  $.doTimeout(5000, function(){    
+    $.each(widgets, function(index, value) {  
+      if(value.refresh == true)  
+      {    
+        var spinner = $('#widget-'+value.slug).spin();   
+        $.get('widgets/render_fragment/' + value.slug, function(data) {  
+          var json_data = $.parseJSON(data);      
+          spinner.stop;                    
+          $('#widget-'+value.slug).html(json_data.html);
+        });
+      }
+    });
+  });  
   
   $('#widgets .widget').draggable({ 
     containment: 'parent',

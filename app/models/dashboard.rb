@@ -10,6 +10,11 @@ class Dashboard
         
   def grid()
     Grid.first(:id => self.grid_id) 
+  end        
+  
+  def grid=(grid)
+    self[:grid_id] = grid if grid.is_a?(BSON::ObjectId)    
+    self[:grid_id] = grid.id if grid.is_a?(Grid)
   end
   
   def widgets(options={})

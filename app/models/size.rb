@@ -1,6 +1,24 @@
 class Size
-  include MongoMapper::EmbeddedDocument
+  attr_reader :width, :height 
+  attr_writer :width, :height
   
-  key :width,  String # width in columns.
-  key :height, String # height in columns
+  def self.to_mongo(value)
+    value.to_a
+  end
+
+  def self.from_mongo(value)
+    value.is_a?(self) ? value : Size.new(value)
+  end
+
+  def initialize(*args)
+    @width, @height = args.flatten
+  end
+
+  def to_a
+    [width, height]
+  end
+
+  def ==(other)
+    other.is_a?(self.class) && other.width == width && other.height == height
+  end
 end
