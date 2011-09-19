@@ -15,7 +15,6 @@ gem 'unidecode'
 gem 'mongomapper_ext', :git => "git://github.com/bookworm/mongomapper_ext.git" 
 gem 'ruby-stemmer'    
 gem 'redcarpet'  
-gem 'carrierwave' 
 gem 'paginator'    
 gem 'fog'
 gem 'postmark'  
@@ -23,13 +22,12 @@ gem 'defender'
 gem 'omniauth', :git => 'git://github.com/intridea/omniauth.git', :branch => '0-3-stable'
 gem 'tzinfo'
 gem 'sanitize'   
-gem 'asset_hat', :git => 'git://github.com/bookworm/asset_hat.git'
 gem 'sinatra-flash', :git => "git://github.com/bookworm/sinatra-flash.git"  
 gem 'enki', :git => 'git://github.com/bookworm/enki.git'    
 gem 'bcrypt-ruby' 
 gem 'garb'                                                  
 gem 'yajl-ruby', :require => 'yajl'
-gem 'sinatra-assetpack', :require => 'sinatra/assetpack'
+gem 'padrino-sprockets', :git => 'git://github.com/bookworm/padrino-sprockets.git'
     
 # Test requirements
 gem 'shoulda', :group => "test"

@@ -3,11 +3,9 @@ html lang="en"
   head
     meta charset="UTF-8"
     title== "Dashboard For #{current_account.username}"
-    == stylesheet_link_tag 'index'  
-    == css :widgets
+    == stylesheet_link_tag 'index' 
     script type="text/javascript" charset="utf-8"== "var widgets = #{@widgets.to_json};"
-    == js :app
-    == js :widgets
+    == js :app  
     style type="text/css" media="screen"== strip_tags(@dashboard.css)  
-  body.dashboard class==@dashboard.grid_classs        
+  body.dashboard class==@dashboard.grid.css_class       
     #widgets.containers
