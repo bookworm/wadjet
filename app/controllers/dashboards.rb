@@ -11,14 +11,9 @@ Wadjet.controllers :dashboards do
     @widgets_css = []
 
     @widgets.each do |w|
-      w.js.each { |j| @widgets_js << '/js/widgets/' + j }
-      w.css.each { |c| @widgets_css << '/css/widgets/' + c }
+      w.js.each { |j| @widgets_js << '/assets/js/widgets/' + j }
+      w.css.each { |c| @widgets_css << '/assets/css/widgets/' + c }
     end  
-    
-    Wadjet.assets do
-      js :widgets,  @widgets_js unless @widgets_js.empty?
-      css :widgets, @widgets_css unless @widgets_css.empty?  
-    end 
     
     @widgets = @widgets.map { |w| { :slug => w.slug, :refresh => w.refresh} }  
   end  

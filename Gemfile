@@ -28,6 +28,7 @@ gem 'bcrypt-ruby'
 gem 'garb'                                                  
 gem 'yajl-ruby', :require => 'yajl'
 gem 'padrino-sprockets', :git => 'git://github.com/bookworm/padrino-sprockets.git'
+gem 'coffee-script'
     
 # Test requirements
 gem 'shoulda', :group => "test"

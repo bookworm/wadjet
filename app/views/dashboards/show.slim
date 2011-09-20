@@ -3,9 +3,10 @@ html lang="en"
   head
     meta charset="UTF-8"
     title== "Dashboard For #{current_account.username}"
-    == stylesheet_link_tag 'index' 
-    script type="text/javascript" charset="utf-8"== "var widgets = #{@widgets.to_json};"
-    == js :app  
+    == stylesheet_link_tag 'index'   
+    == javascript_include_tag :app  
+    script type="text/javascript" charset="utf-8"== "var widgets = #{@widgets.to_json};"       
+    == stylesheet_link_tag @widgets_css
     style type="text/css" media="screen"== strip_tags(@dashboard.css)  
   body.dashboard class==@dashboard.grid.css_class       
     #widgets.containers

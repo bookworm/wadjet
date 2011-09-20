@@ -1,3 +1,8 @@
+//= require jquery
+//= require jquery.dotimeout
+//= require jquery.ujs
+//= requre spin
+//= require jquery.spin
 $(document).ready(function() {      
   $.each(widgets, function(index, value) {   
     $.get('widgets/render_fragment/' + value.slug, function(data) {  
