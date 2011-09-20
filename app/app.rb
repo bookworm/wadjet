@@ -48,9 +48,12 @@ class Wadjet < Padrino::Application
     render 'errors/404'
   end     
   
-  assets do         
+  assets do        
+    stylesheets_url = 'css'
+    javascripts_url = 'js'  
+    public_stylesheets_folder = 'css'  
+    public_javascripts_folder = 'js'
     append_path 'assets/js'
     append_path 'assets/js/app'
-    # append_path 'assets/css'
   end
 end
