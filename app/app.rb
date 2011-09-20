@@ -31,15 +31,15 @@ class Wadjet < Padrino::Application
   # Access Rules
   #                   
   
-  # access_control.roles_for :any do |role|
-  #   role.protect "/"
-  #   role.allow "/login"
-  #   role.allow "/sessions"
-  # end 
-  # 
-  # access_control.roles_for :registered, :admin do |role|
-  #   role.allow "/"
-  # end  
+  access_control.roles_for :any do |role|
+    role.protect "/"
+    role.allow "/login"
+    role.allow "/sessions"
+  end 
+  
+  access_control.roles_for :registered, :admin do |role|
+    role.allow "/"
+  end  
   
   ## 
   # Error Handling
