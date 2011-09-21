@@ -11,11 +11,11 @@ class Wadjet < Padrino::Application
   
   # Authorizaition
   register Padrino::Admin::AccessControl 
-  register Padrino::Sprockets
   register OmniAuthInitializer    
     
   # Resources. JS, CSS handling ext
-  register CompassInitializer  
+  register CompassInitializer 
+  register Padrino::Sprockets
   register Sinatra::Flash
   
   ##
@@ -25,7 +25,8 @@ class Wadjet < Padrino::Application
   # Sessions
   set :login_page, "/login"  
   set :session_id, 'widget'    
-  set :asset_uri_root, "/"       
+  set :asset_uri_root, "/" 
+  set :layout, false
 
   ## 
   # Access Rules
@@ -49,7 +50,8 @@ class Wadjet < Padrino::Application
   end     
   
   assets do    
-    digest false    
+    digest false  
+    handle_stylesheets false  
     stylesheets_url 'css'
     javascripts_url 'js'  
     public_assets_folder '/'

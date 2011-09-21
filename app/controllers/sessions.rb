@@ -18,7 +18,7 @@ Wadjet.controllers :sessions do
   # Login and Logout 
   #       
   
-  get :new, :map => '/login' do 
+  get :new, :map => '/login' do   
     render 'sessions/new'
   end
   

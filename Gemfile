@@ -1,6 +1,7 @@
 source :rubygems         
 
-# Project requirements
+# Project requirements  
+gem 'thin'
 gem 'rake'
 gem 'rack-flash'   
 
@@ -28,11 +29,11 @@ gem 'bcrypt-ruby'
 gem 'garb'                                                  
 gem 'yajl-ruby', :require => 'yajl'
 gem 'padrino-sprockets', :git => 'git://github.com/bookworm/padrino-sprockets.git'
-gem 'coffee-script'
+gem 'coffee-script'   
     
 # Test requirements
 gem 'shoulda', :group => "test"
 gem 'rack-test', :require => "rack/test", :group => "test"
 
 # Padrino
-gem 'padrino', :git => 'git://github.com/bookworm/padrino-framework.git'
+gem 'padrino', :git => 'git://github.com/bookworm/padrino-framework.git'       

@@ -1,6 +1,6 @@
 Wadjet.controllers :dashboards do   
   
-  before (:add_widget, :remove_widget, :show, :edit) do    
+  before(:add_widget, :remove_widget, :show, :edit) do    
     @dashboard = Dashboard.first(:slug => params[:slug], :account_id => current_account.id)
   end
   
@@ -11,8 +11,8 @@ Wadjet.controllers :dashboards do
     @widgets_css = []
 
     @widgets.each do |w|
-      w.js.each { |j| @widgets_js << '/assets/js/widgets/' + j }
-      w.css.each { |c| @widgets_css << '/assets/css/widgets/' + c }
+      w.js.each { |j| @widgets_js << '/widgets/' + j }
+      w.css.each { |c| @widgets_css << '/widgets/' + c }
     end  
     
     @widgets = @widgets.map { |w| { :slug => w.slug, :refresh => w.refresh} }  
