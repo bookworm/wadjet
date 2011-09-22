@@ -1,0 +1,6 @@
+gsub: (str, re, replStr) ->
+  while (i = str.indexOf(re)) != -1
+    pre  = str.substr(0, i)
+    post = str.substr(i+_.size(re),_.size(str))
+    str = pre + replStr + post
+  return str

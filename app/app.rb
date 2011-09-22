@@ -61,6 +61,7 @@ class Wadjet < Padrino::Application
     public_javascripts_folder 'js'
     append_path 'assets/js'
     append_path 'assets/js/app'  
-    append_path '../vendor/assets/js'
+    append_path '../vendor/assets/js'  
+    append_path '../lib/assets/js'  
   end
 end
