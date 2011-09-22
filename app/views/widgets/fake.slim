@@ -2,4 +2,14 @@
   .header
     h2.title=@widget.title  
   .sep 
-  .content== @widget.desc
+  .content-wrap
+    .content== @widget.desc    
+  .sep
+  .footer    
+    ul.links
+      li.configure
+        a.hideTxt href="#" Configure Widget
+      li.name
+        a href="#"== @widget.name
+      li.delete
+        a.hideTxt href="#" Delete Widget

@@ -5,7 +5,7 @@ Wadjet.controllers :dashboards do
   end   
   
   before(:index) do
-    @dashboard = Dashboard.first(:account_id => current_account.id)          
+    @dashboard = Dashboard.first(:account_id => current_account.id, :main => true)          
   end
   
   before(:index, :show) do

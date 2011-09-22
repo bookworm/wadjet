@@ -8,5 +8,6 @@ html lang="en"
     script type="text/javascript" charset="utf-8"== "var widgets = #{@widgets.to_json};"       
     == stylesheet_link_tag @widgets_css
     style type="text/css" media="screen"== strip_tags(@dashboard.css)  
-  body.dashboard class==@dashboard.grid.css_class       
-    #widgets.containers
+  body.dashboard class==@dashboard.grid.css_class    
+    == partial "partials/header"   
+    #widgets.container

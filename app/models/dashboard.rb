@@ -1,10 +1,11 @@
 class Dashboard
   include MongoMapper::Document
   
-  key :title, String
+  key :title,      String
   key :account_id, ObjectId      
   key :css,        String     
-  key :grid_id,    ObjectId
+  key :grid_id,    ObjectId   
+  key :main,       Boolean, :default => false # Should this appear on the homepage?
     
   belongs_to :user, :class => 'Account'   
         
