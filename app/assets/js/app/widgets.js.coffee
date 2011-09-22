@@ -32,7 +32,7 @@ $(document).reader ->
              
   $('.configure-widget').click ->
     widget_slug = $(this).parent('.widget').attr('id')   
-    $.get "widgets/#{widget.name}/show/#{widget.slug}", (data) ->
+    $.get "widgets/#{widget.name}/edit/#{widget.slug}", (data) ->
       json_data = $.parseJSON(data)
       $dialog = $('<div></div>')
         .html(json_data.html)
@@ -40,3 +40,14 @@ $(document).reader ->
           autoOpen: false 
           title: json_data.title
       $dialog.dialog.open('open')  
+         
+  $('.add-widget').click ->     
+    $.get "widgets/add", (data) ->
+      json_data = $.parseJSON(data)
+      $dialog = $('<div></div>')
+        .html(json_data.html)
+        .dialog 
+          autoOpen: false 
+          title: json_data.title
+      $dialog.dialog.open('open')
+    return false
