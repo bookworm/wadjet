@@ -1,7 +1,6 @@
 $(document).ready ->
   $('.configure-dashboard').click ->     
-    widget_slug = $(this).parent('.widget').attr('id')   
-    $.get "widgets/#{widget.name}/add/#{widget.slug}", (data) ->
+    $.get "dashboards/edit", (data) ->
       json_data = $.parseJSON(data)
       $dialog = $('<div></div>')
         .html(json_data.html)
