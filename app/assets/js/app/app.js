@@ -1,14 +1,15 @@
 //= require jquery
+//= require jquery.ui
 //= require jquery.dotimeout
 //= require jquery.ujs
 //= requre spin
 //= require jquery.spin
 $(document).ready(function() {      
   $.each(widgets, function(index, value) {   
-    $.get('widgets/render_fragment/' + value.slug, function(data) {  
+    $.get('widgets/' + value.name + '/' + 'render_fragment/' + value.slug, function(data) {  
       var json_data = $.parseJSON(data);     
       var $widget = $('<div></div>')
-        .attr('id', '#widget'+'-'+value.slug)
+        .attr('id', 'widget'+'-'+value.slug)
         .html(json_data.html);
       $('#widgets').append($widget);
     });
@@ -19,7 +20,7 @@ $(document).ready(function() {
       if(value.refresh == true)  
       {    
         var spinner = $('#widget-'+value.slug).spin();   
-        $.get('widgets/render_fragment/' + value.slug, function(data) {  
+        $.get('widgets/' + value.name + '/' + 'render_fragment/' + value.slug, function(data) {  
           var json_data = $.parseJSON(data);      
           spinner.stop;                    
           $('#widget-'+value.slug).html(json_data.html);

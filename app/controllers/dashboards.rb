@@ -2,20 +2,24 @@ Wadjet.controllers :dashboards do
   
   before(:add_widget, :remove_widget, :show, :edit) do    
     @dashboard = Dashboard.first(:slug => params[:slug], :account_id => current_account.id)
+  end   
+  
+  before(:index) do
+    @dashboard = Dashboard.first(:account_id => current_account.id)          
   end
   
   before(:index, :show) do
-    @widgets = Widget.fields(:slug, :js, :css, :refresh).all(:dashboard_id => @dashboard.id)    
+    @widgets = Widget.fields(:slug, :js, :name, :css, :refresh).all(:dashboard_id => @dashboard.id)    
     
     @widgets_js = []
     @widgets_css = []
 
     @widgets.each do |w|
-      w.js.each { |j| @widgets_js << '/widgets/' + j }
-      w.css.each { |c| @widgets_css << '/widgets/' + c }
+      w.js.each { |j| @widgets_js << '/js/widgets/' + j }
+      w.css.each { |c| @widgets_css << '/css/widgets/' + c }
     end  
     
-    @widgets = @widgets.map { |w| { :slug => w.slug, :refresh => w.refresh} }  
+    @widgets = @widgets.map { |w| { :slug => w.slug, :refresh => w.refresh, :name => w.name} }  
   end  
   
   before(:create, :edit) do 
@@ -27,7 +31,6 @@ Wadjet.controllers :dashboards do
   end
   
   get :index, :map => '/' do
-    @dashboard = Dashboard.first(:account_id => current_account.id)         
     render 'dashboards/show'
   end  
   

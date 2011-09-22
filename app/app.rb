@@ -27,6 +27,8 @@ class Wadjet < Padrino::Application
   set :session_id, 'widget'    
   set :asset_uri_root, "/" 
   set :layout, false
+  set :stylesheets_path, 'css' 
+  set :javascripts_path, 'js'
 
   ## 
   # Access Rules

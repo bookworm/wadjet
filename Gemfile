@@ -27,7 +27,8 @@ gem 'sinatra-flash', :git => "git://github.com/bookworm/sinatra-flash.git"
 gem 'enki', :git => 'git://github.com/bookworm/enki.git'    
 gem 'bcrypt-ruby' 
 gem 'garb'                                                  
-gem 'yajl-ruby', :require => 'yajl'
+gem 'yajl-ruby', :require => 'yajl'            
+gem 'sprockets', git: 'git://github.com/sstephenson/sprockets.git'
 gem 'padrino-sprockets', :git => 'git://github.com/bookworm/padrino-sprockets.git'
 gem 'coffee-script'   
     

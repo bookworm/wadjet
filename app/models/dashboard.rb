@@ -17,7 +17,7 @@ class Dashboard
     self[:grid_id] = grid.id if grid.is_a?(Grid)
   end
   
-  def widgets(options={})
+  def widgets(options={})        
     Widget.all({:dashboard_id => self.id}.merge!(options))
   end  
   
