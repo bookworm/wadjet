@@ -1,6 +1,6 @@
 $(document).reader ->
   $.each widgets, (index, widget) ->    
-    $.get "widgets/#{widget.name}/render/#{widget.slug}", (data) ->
+    $.get "widgets/#{widget.name}/#{widget.slug}", (data) ->
       json_data = $.parseJSON(data)
       $widget = $('<div></div>')
         .attr('id', "widget-#{widget.slug}")       
@@ -12,7 +12,7 @@ $(document).reader ->
     $.each widgets, (index, widget) ->  
       if widget.refresh  
         spinner = $("#widget-#{widget.slug}").spin
-        $.get "widgets/#{widget.name}/show/#{widget.slug}", (data) ->
+        $.get "widgets/#{widget.name}/#{widget.slug}", (data) ->
           json_data = $.parseJSON(data)
           spinner.stop
           $("#widget-#{widget.slug}").html(json_data.html)  
@@ -25,14 +25,14 @@ $(document).reader ->
       widget_slug = $(@).attr('id')
       widget_slug = gsub(widget_slug, 'widget-', '')  
       console.log(widget_slug)
-      $.post("widgets/save_position#{widget_slug}")
+      $.post("widgets/#{widget_slug}/save_position")
         position:
           top: ui.offset.top
           left: ui.offset.left
              
   $('.configure-widget').click ->
     widget_slug = $(this).parent('.widget').attr('id')   
-    $.get "widgets/#{widget.name}/edit/#{widget.slug}", (data) ->
+    $.get "widgets/#{widget.name}/#{widget.slug}/edit", (data) ->
       json_data = $.parseJSON(data)
       $dialog = $('<div></div>')
         .html(json_data.html)
@@ -42,7 +42,7 @@ $(document).reader ->
       $dialog.dialog.open('open')  
          
   $('.add-widget').click ->     
-    $.get "widgets/add", (data) ->
+    $.get "widgets/new", (data) ->
       json_data = $.parseJSON(data)
       $dialog = $('<div></div>')
         .html(json_data.html)
