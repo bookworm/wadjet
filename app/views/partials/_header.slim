@@ -1,0 +1,13 @@
+header     
+  .top
+    h1.dashboard-title== @dashboard.title 
+    == select :dashboard_id, :collection => Dashboard.all(:id.ne => @dashboard.id), :fields => [:title, :id]     
+    ul#nav
+      li.logout
+        a href==url(:sessions, :logout) Logout 
+  nav#dashboard-nav 
+    ul.links   
+      li.configure
+        a.configure-dashboard href==url(:dashboards, :edit, :id => @dashboard.id) Configure   
+      li.add-widget
+        a.add-widget href==url(:widgets, :add, :dashboard_id => @dashboard.id) Add Widget
