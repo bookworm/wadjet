@@ -1,6 +1,6 @@
 Wadjet.controllers :widgets do
   
-  post :save_position, :map => '/widgets/save_position/:slug' do
+  post :save_position, :map => '/widgets/:slug/save_position/' do
     @widget = Widget.first(:slug => params[:slug])   
     @widget.position.update_attributes(params[:position])    
     if @widget.save
@@ -10,7 +10,7 @@ Wadjet.controllers :widgets do
     end
   end   
   
-  post :settings, :map => '/widgets/settings/:slug' do        
+  post :settings, :map => '/widgets/:slug/settings/' do        
     @widget = Widget.first(:slug => params[:slug])   
     if @widget.update_attributes(params[:settings])     
       return 200
