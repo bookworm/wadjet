@@ -26,6 +26,10 @@ Wadjet.controllers :dashboards do
     @grids = Grid.all( :order => "title desc").map { |grid| [grid.title, grid.id] }     
   end    
   
+  before(:new) do
+    @selected_grid = @grids.first.id  
+  end
+  
   before(:edit) do
     @selected_grid = @dashboard.grid().id
   end
@@ -38,11 +42,10 @@ Wadjet.controllers :dashboards do
     render 'dashboards/show' 
   end  
   
-  get :create, :map => '/dashboards/create' do
-    @selected_grid = @grids.first.id
+  get :new, :map => '/dashboards/new' do          
   end
    
-  post :create, :map => '/dashboards/create' do
+  post :create, :map => '/dashboards' do
     @dashboard = Dashboard.new({:account_id => current_account.id}.merge!(params[:dashboard]))
     if @dashboard.save
       return 200
@@ -51,7 +54,7 @@ Wadjet.controllers :dashboards do
     end
   end
   
-  post :add_widget, :map => '/dashboards/:slug/add_widget' do
+  post :add_widget, :map => '/dashboards/:slug/widgets/add' do
     @widget = dashboard.add_widget(params[:settings])
     if @widget.save
       return 200
@@ -60,7 +63,7 @@ Wadjet.controllers :dashboards do
     end
   end  
   
-  get :remove_widget, :map => '/dashboards/:slug/remove_widget/:widget_slug' do    
+  get :remove_widget, :map => '/dashboards/:slug/widgets/:widget_slug/remove' do    
     if @dashboard.remove_widget(params[:widget_slug])
       return 200
     else
