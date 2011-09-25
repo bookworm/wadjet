@@ -10,7 +10,7 @@ class Widget
   key :js,           Array
   key :css,          Array   
   key :refresh,      Boolean, :default => true
-  key :size, Size
+  key :size,         Size
   
   slug_key :name    
   
